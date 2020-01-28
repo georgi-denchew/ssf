@@ -6,16 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/georgi-denchew/ssf.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/georgi-denchew/ssf/issues"
-  },
-  "homepage": "https://github.com/georgi-denchew/ssf#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "eslint": "^6.8.0",

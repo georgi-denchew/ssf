@@ -21,13 +21,15 @@ const apiKey = fs.readFileSync('api_key');
 const baseURL = 'https://api.musixmatch.com/ws/1.1/';
 
 async function find() {
+  // 1. get artist and song from user input
   rl.question('Artist name: ', (artist) => {
     rl.question('Song name: ', (song) => {
       rl.close();
 
-      // start
+      // 2. search for lyrics
       const getTrackURL = `${baseURL}matcher.lyrics.get?q_track=${song}&q_artist=${artist}&apikey=${apiKey}`;
       axios.get(getTrackURL).then(async (response) => {
+        // 3. process lyrics to find the mostly used word (stem)
         let rawLyrics = response.data.message.body.lyrics.lyrics_body;
 
         const tokenizer = new natural.WordTokenizer();
@@ -73,6 +75,7 @@ async function find() {
 
         console.log(`label: ${trackName}`);
 
+        // 4. Search for song titles that contain the mostly used word
         const matchingTracksURL = `${baseURL}track.search?q_track=${trackName}&page_size=5&page=1&s_track_rating=desc&apikey=${apiKey}`;
         const matchingTracksResponse = await axios.get(matchingTracksURL);
         const matchingTracks = matchingTracksResponse.data.message.body.track_list
