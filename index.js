@@ -32,20 +32,23 @@ async function find() {
         // 3. process lyrics to find the mostly used word (stem)
         let rawLyrics = response.data.message.body.lyrics.lyrics_body;
 
-        const tokenizer = new natural.WordTokenizer();
         const index = rawLyrics.indexOf('*******');
         rawLyrics = rawLyrics.substr(0, index);
 
-        // console.log(`raw: ${rawLyrics}`);
+        console.log(`raw: ${rawLyrics}`);
+        const tokenizer = new natural.WordTokenizer();
         const tokenizedArray = tokenizer.tokenize(rawLyrics.toLowerCase());
-        // console.log(`tokenizedArray: ${tokenizedArray}`);
+        console.log();
+
+        console.log(`tokenizedArray: ${tokenizedArray}`);
+        console.log();
+
         const wordsCounter = {};
 
+        // TODO: log
         for (let i = 0; i < tokenizedArray.length; i += 1) {
           const token = tokenizedArray[i].toLowerCase();
           const stem = natural.PorterStemmer.stem(token);
-          // console.log(`token: ${token} stem: ${stem}`);
-
           try {
             const pos = await wordpos.getPOS(token);
             if (pos.rest.length === 0) {
@@ -73,7 +76,10 @@ async function find() {
           }
         }
 
-        console.log(`label: ${trackName}`);
+        console.log(`wordsCounter data: ${JSON.stringify(wordsCounter)}`);
+        console.log();
+
+        console.log(`most common word(stem) in song: ${trackName}`);
 
         // 4. Search for song titles that contain the mostly used word
         const matchingTracksURL = `${baseURL}track.search?q_track=${trackName}&page_size=5&page=1&s_track_rating=desc&apikey=${apiKey}`;
