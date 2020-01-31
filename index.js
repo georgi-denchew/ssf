@@ -35,13 +35,13 @@ async function find() {
         const index = rawLyrics.indexOf('*******');
         rawLyrics = rawLyrics.substr(0, index);
 
-        console.log(`raw: ${rawLyrics}`);
+        // console.log(`raw: ${rawLyrics}`);
         const tokenizer = new natural.WordTokenizer();
         const tokenizedArray = tokenizer.tokenize(rawLyrics.toLowerCase());
-        console.log();
+        // console.log();
 
-        console.log(`tokenizedArray: ${tokenizedArray}`);
-        console.log();
+        // console.log(`tokenizedArray: ${tokenizedArray}`);
+        // console.log();
 
         const wordsCounter = {};
 
@@ -76,7 +76,7 @@ async function find() {
           }
         }
 
-        console.log(`wordsCounter data: ${JSON.stringify(wordsCounter)}`);
+        // console.log(`wordsCounter data: ${JSON.stringify(wordsCounter)}`);
         console.log();
 
         console.log(`most common word(stem) in song: ${trackName}`);
