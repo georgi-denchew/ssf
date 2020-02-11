@@ -1,12 +1,12 @@
 ## What?
 
-Please be specific and try to describe your though process. State the obvious, since this might be the first time the reviewer is looking at the code
+Please be specific and try to describe your thought process. State the obvious, since this might be the first time the reviewer is looking at the code
 
 ## Why?
 
 Copy (if there is one) the text of the original Trello/ Jira ticket in here, with a link back to it for the curious.
 
-## Anything in particular you'd like to highlight to reviewers?
+## Anything, in particular, you'd like to highlight to reviewers?
 
 Mention here sections of code which you would like reviewers to pay extra attention to .E.g
 
